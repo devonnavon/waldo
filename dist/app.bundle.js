@@ -21146,76 +21146,118 @@ module.exports = g;
 
 /***/ }),
 
-/***/ "./src/firebase.config.js":
+/***/ "./src/backend/backend.js":
 /*!********************************!*\
-  !*** ./src/firebase.config.js ***!
+  !*** ./src/backend/backend.js ***!
   \********************************/
-/*! exports provided: firebaseConfig */
+/*! exports provided: loadCharacters */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "firebaseConfig", function() { return firebaseConfig; });
-const firebaseConfig = {
-	apiKey: 'AIzaSyCbM1-Lz_dXCglGcgwfem5tmXu4a4CKXn0',
-	authDomain: 'waldo-82cf0.firebaseapp.com',
-	databaseURL: 'https://waldo-82cf0.firebaseio.com',
-	projectId: 'waldo-82cf0',
-	storageBucket: 'waldo-82cf0.appspot.com',
-	messagingSenderId: '57558046503',
-	appId: '1:57558046503:web:1399aa86cbc7fc2ee23b02',
-};
-
-
-
-
-/***/ }),
-
-/***/ "./src/img/scifi.jpg":
-/*!***************************!*\
-  !*** ./src/img/scifi.jpg ***!
-  \***************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = (__webpack_require__.p + "06a538d41ebcb3341a47662415334208.jpg");
-
-/***/ }),
-
-/***/ "./src/index.js":
-/*!**********************!*\
-  !*** ./src/index.js ***!
-  \**********************/
-/*! no exports provided */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./style.css */ "./src/style.css");
-/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_style_css__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var firebase_app__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! firebase/app */ "./node_modules/firebase/app/dist/index.cjs.js");
-/* harmony import */ var firebase_app__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(firebase_app__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var firebase_firestore__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! firebase/firestore */ "./node_modules/firebase/firestore/dist/index.esm.js");
-/* harmony import */ var _firebase_config__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./firebase.config */ "./src/firebase.config.js");
-/* harmony import */ var _setup__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./setup */ "./src/setup.js");
-
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "loadCharacters", function() { return loadCharacters; });
+/* harmony import */ var firebase_app__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! firebase/app */ "./node_modules/firebase/app/dist/index.cjs.js");
+/* harmony import */ var firebase_app__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(firebase_app__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var firebase_firestore__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! firebase/firestore */ "./node_modules/firebase/firestore/dist/index.esm.js");
+/* harmony import */ var _firebase_config__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../firebase.config */ "./src/firebase.config.js");
  // Firebase App (the core Firebase SDK) is always required and must be listed first
 
 
 
+firebase_app__WEBPACK_IMPORTED_MODULE_0__["initializeApp"](_firebase_config__WEBPACK_IMPORTED_MODULE_2__["firebaseConfig"]);
 
-firebase_app__WEBPACK_IMPORTED_MODULE_1__["initializeApp"](_firebase_config__WEBPACK_IMPORTED_MODULE_3__["firebaseConfig"]);
-Object(_setup__WEBPACK_IMPORTED_MODULE_4__["render"])();
+const loadCharacters = async () => {
+	const db = firebase_app__WEBPACK_IMPORTED_MODULE_0__["firestore"]();
+	const snapshot = await db.collection('characters').get();
+	const objs = [];
+	snapshot.forEach((doc) => {
+		objs.push(doc.data());
+	});
+	return objs;
+};
+
+
+
+// db.collection('cities')
+// 	.where('capital', '==', true)
+// 	.get()
+// 	.then(function (querySnapshot) {
+// 		querySnapshot.forEach(function (doc) {
+// 			// doc.data() is never undefined for query doc snapshots
+// 			console.log(doc.id, ' => ', doc.data());
+// 		});
+// 	})
+// 	.catch(function (error) {
+// 		console.log('Error getting documents: ', error);
+// 	});
 
 
 /***/ }),
 
-/***/ "./src/listeners.js":
-/*!**************************!*\
-  !*** ./src/listeners.js ***!
-  \**************************/
+/***/ "./src/display/Characters.js":
+/*!***********************************!*\
+  !*** ./src/display/Characters.js ***!
+  \***********************************/
+/*! exports provided: CharacterDisplay */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CharacterDisplay", function() { return CharacterDisplay; });
+/* harmony import */ var _backend_backend__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../backend/backend */ "./src/backend/backend.js");
+
+
+const Character = (charObj) => {
+	const info = charObj;
+	const left = info.coords.top_left;
+	const right = info.coords.bottom_right;
+
+	const getArea = () => `${left.x},${left.y},${right.x},${right.y}`;
+	const getBox = () => {
+		return {
+			left: left.x,
+			top: left.y,
+			width: right.x - left.x,
+			height: right.y - left.y,
+		};
+	};
+	const getNameSlug = () => info.name_slug;
+	const getName = () => info.getName;
+	return { getArea, getBox, getNameSlug, getName };
+};
+
+const CharacterDisplay = (() => {
+	const nav = document.querySelector('nav');
+
+	const characters = (async () => {
+		const charArray = await Object(_backend_backend__WEBPACK_IMPORTED_MODULE_0__["loadCharacters"])();
+		const newChars = [];
+		charArray.forEach((e) => {
+			newChars.push(Character(e));
+		});
+		return newChars;
+	})();
+
+	// const buildNav = () => {
+
+	// }
+
+	const render = async () => {
+		// buildNav();
+		console.log(await characters);
+	};
+	return { render };
+})();
+
+
+
+
+/***/ }),
+
+/***/ "./src/display/listeners.js":
+/*!**********************************!*\
+  !*** ./src/display/listeners.js ***!
+  \**********************************/
 /*! exports provided: imageClick, mapTest */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -21239,29 +21281,35 @@ const mapTest = (e) => {
 
 /***/ }),
 
-/***/ "./src/setup.js":
-/*!**********************!*\
-  !*** ./src/setup.js ***!
-  \**********************/
+/***/ "./src/display/setup.js":
+/*!******************************!*\
+  !*** ./src/display/setup.js ***!
+  \******************************/
 /*! exports provided: render */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
-/* harmony import */ var _img_scifi_jpg__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./img/scifi.jpg */ "./src/img/scifi.jpg");
-/* harmony import */ var _listeners__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./listeners */ "./src/listeners.js");
+/* harmony import */ var _img_scifi_jpg__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../img/scifi.jpg */ "./src/img/scifi.jpg");
+/* harmony import */ var _listeners__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./listeners */ "./src/display/listeners.js");
+/* harmony import */ var _Characters__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Characters */ "./src/display/Characters.js");
 
+
+// import { loadCharacters } from '../backend/backend';
 
 
 const render = () => {
 	//main container
+	_Characters__WEBPACK_IMPORTED_MODULE_2__["CharacterDisplay"].render();
+
 	const container = document.createElement('div');
 	container.classList.add('container');
 
 	container.appendChild(addImage());
 	container.appendChild(buildNav());
 	container.appendChild(addLeaderboard());
+
 	container.appendChild(fordSquare());
 
 	const map = document.createElement('map');
@@ -21330,6 +21378,64 @@ const createCharacter = (name) => {
 };
 
 
+
+
+/***/ }),
+
+/***/ "./src/firebase.config.js":
+/*!********************************!*\
+  !*** ./src/firebase.config.js ***!
+  \********************************/
+/*! exports provided: firebaseConfig */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "firebaseConfig", function() { return firebaseConfig; });
+const firebaseConfig = {
+	apiKey: 'AIzaSyCbM1-Lz_dXCglGcgwfem5tmXu4a4CKXn0',
+	authDomain: 'waldo-82cf0.firebaseapp.com',
+	databaseURL: 'https://waldo-82cf0.firebaseio.com',
+	projectId: 'waldo-82cf0',
+	storageBucket: 'waldo-82cf0.appspot.com',
+	messagingSenderId: '57558046503',
+	appId: '1:57558046503:web:1399aa86cbc7fc2ee23b02',
+};
+
+
+
+
+/***/ }),
+
+/***/ "./src/img/scifi.jpg":
+/*!***************************!*\
+  !*** ./src/img/scifi.jpg ***!
+  \***************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = (__webpack_require__.p + "06a538d41ebcb3341a47662415334208.jpg");
+
+/***/ }),
+
+/***/ "./src/index.js":
+/*!**********************!*\
+  !*** ./src/index.js ***!
+  \**********************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./style.css */ "./src/style.css");
+/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_style_css__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _display_setup__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./display/setup */ "./src/display/setup.js");
+
+
+
+Object(_display_setup__WEBPACK_IMPORTED_MODULE_1__["render"])();
 
 
 /***/ }),

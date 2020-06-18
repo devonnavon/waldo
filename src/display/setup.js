@@ -1,14 +1,19 @@
-import img from './img/scifi.jpg';
+import img from '../img/scifi.jpg';
 import { imageClick, mapTest } from './listeners';
+// import { loadCharacters } from '../backend/backend';
+import { CharacterDisplay } from './Characters';
 
 const render = () => {
 	//main container
+	CharacterDisplay.render();
+
 	const container = document.createElement('div');
 	container.classList.add('container');
 
 	container.appendChild(addImage());
 	container.appendChild(buildNav());
 	container.appendChild(addLeaderboard());
+
 	container.appendChild(fordSquare());
 
 	const map = document.createElement('map');
