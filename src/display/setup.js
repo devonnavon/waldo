@@ -5,26 +5,12 @@ import { CharacterDisplay } from './Characters';
 
 const render = () => {
 	//main container
-	CharacterDisplay.render();
 
 	const container = document.createElement('div');
-	container.classList.add('container');
-
+	container.setAttribute('id', 'container');
 	container.appendChild(addImage());
-	container.appendChild(buildNav());
-	container.appendChild(addLeaderboard());
 
-	container.appendChild(fordSquare());
-
-	const map = document.createElement('map');
-	map.name = 'characterMap';
-	const ford = document.createElement('area');
-	ford.setAttribute('shape', 'rect');
-	ford.setAttribute('coords', '439,1385,469,1425');
-	ford.addEventListener('click', mapTest);
-	map.appendChild(ford);
-	container.appendChild(map);
-
+	CharacterDisplay.render();
 	document.body.appendChild(container);
 };
 
