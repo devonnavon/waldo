@@ -44,8 +44,17 @@ span.click_pop {
 	border-radius: 100%;
 	animation: click_pop 0.3s ease;
 	transform: rotate(15deg);
+	z-index: 500;
+}
+
+area {
 	z-index: 999;
 }
+
+map {
+	z-index: 999;
+}
+
 @keyframes click_pop {
 	0% {
 		box-shadow: inset 0 0 0 20px rgba(255, 255, 255, 0.3);

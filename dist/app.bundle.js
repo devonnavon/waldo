@@ -20665,7 +20665,7 @@ var esm_5 = esm.XhrIo;
 var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
 exports = ___CSS_LOADER_API_IMPORT___(false);
 // Module
-exports.push([module.i, ".nav {\n\tposition: absolute;\n\ttop: 8px;\n\tleft: 8px;\n\tfont-family: Arial, Helvetica, sans-serif;\n\tfont-size: 20px;\n\tbackground-color: rgba(0, 0, 0, 0.44);\n\tcolor: white;\n\tborder: 5px solid transparent;\n\tborder-radius: 0px 20px 20px 0px;\n\t/* z-index: 0; */\n}\n\n.nav .title {\n\tfont-style: oblique;\n}\n\n#mainImg {\n\tposition: relative;\n\t/* z-index: 1; */\n}\n\n#fordSquare {\n\tposition: absolute;\n\tdisplay: none;\n\tborder: 1px solid red;\n\twidth: 50px;\n\theight: 50px;\n}\n\n.square {\n\tposition: absolute;\n\tdisplay: none;\n\tborder: 1px solid red;\n}\n\nspan.click_pop {\n\tposition: fixed;\n\tdisplay: block;\n\twidth: 60px;\n\theight: 60px;\n\tmargin-top: -30px;\n\tmargin-left: -30px;\n\tborder-radius: 100%;\n\tanimation: click_pop 0.3s ease;\n\ttransform: rotate(15deg);\n\tz-index: 999;\n}\n@keyframes click_pop {\n\t0% {\n\t\tbox-shadow: inset 0 0 0 20px rgba(255, 255, 255, 0.3);\n\t\twidth: 60px;\n\t\theight: 60px;\n\t\tmargin-top: -30px;\n\t\tmargin-left: -30px;\n\t\ttransform: rotate(-30deg);\n\t}\n\t100% {\n\t\tbox-shadow: inset 0 0 0 0 rgba(255, 255, 255, 0.2);\n\t\twidth: 70px;\n\t\theight: 70px;\n\t\tmargin-top: -35px;\n\t\tmargin-left: -35px;\n\t\ttransform: rotate(15deg);\n\t}\n}\nspan.click_pop > span {\n\tposition: absolute;\n\twidth: 60px;\n\theight: 60px;\n\ttop: 50%;\n\tleft: 50%;\n\tmargin-top: -30px;\n\tmargin-left: -30px;\n\ttransform: scale(0.9);\n\t-webkit-filter: blurY(5px);\n}\nspan.click_pop > span:nth-of-type(2) {\n\ttransform: rotate(45deg);\n}\nspan.click_pop > span:nth-of-type(3) {\n\ttransform: rotate(-45deg);\n}\nspan.click_pop > span:last-child {\n\ttransform: rotate(90deg) scale(0.9);\n}\nspan.click_pop > span:before,\nspan.click_pop > span:after {\n\tcontent: '';\n\tposition: absolute;\n\theight: 2px;\n\twidth: 0;\n\ttop: 50%;\n\tleft: -14px;\n\tmargin-top: -1px;\n\tborder-radius: 2px;\n\tbackground: rgba(255, 255, 255, 0.1);\n\tanimation: pop_out_L 0.3s ease;\n\tanimation-delay: 0.1s;\n}\nspan.click_pop > span:after {\n\tleft: auto;\n\tright: -14px;\n\tanimation: pop_out_R 0.3s ease;\n\tanimation-delay: 0.1s;\n}\n@keyframes pop_out_L {\n\t0% {\n\t\tleft: 20px;\n\t\twidth: 2px;\n\t}\n\t20% {\n\t\tbox-shadow: 6px 0 rgba(255, 255, 255, 0.05),\n\t\t\t-4px 0 rgba(255, 255, 255, 0.05);\n\t}\n\t40% {\n\t\twidth: 10px;\n\t}\n\t60% {\n\t\tleft: -14px;\n\t}\n\t100% {\n\t\twidth: 2px;\n\t}\n}\n@keyframes pop_out_R {\n\t0% {\n\t\tright: 20px;\n\t\twidth: 2px;\n\t}\n\t20% {\n\t\tbox-shadow: 6px 0 rgba(255, 255, 255, 0.05),\n\t\t\t-4px 0 rgba(255, 255, 255, 0.05);\n\t}\n\t40% {\n\t\twidth: 10px;\n\t}\n\t60% {\n\t\tright: -14px;\n\t}\n\t100% {\n\t\twidth: 2px;\n\t}\n}\n", ""]);
+exports.push([module.i, ".nav {\n\tposition: absolute;\n\ttop: 8px;\n\tleft: 8px;\n\tfont-family: Arial, Helvetica, sans-serif;\n\tfont-size: 20px;\n\tbackground-color: rgba(0, 0, 0, 0.44);\n\tcolor: white;\n\tborder: 5px solid transparent;\n\tborder-radius: 0px 20px 20px 0px;\n\t/* z-index: 0; */\n}\n\n.nav .title {\n\tfont-style: oblique;\n}\n\n#mainImg {\n\tposition: relative;\n\t/* z-index: 1; */\n}\n\n#fordSquare {\n\tposition: absolute;\n\tdisplay: none;\n\tborder: 1px solid red;\n\twidth: 50px;\n\theight: 50px;\n}\n\n.square {\n\tposition: absolute;\n\tdisplay: none;\n\tborder: 1px solid red;\n}\n\nspan.click_pop {\n\tposition: fixed;\n\tdisplay: block;\n\twidth: 60px;\n\theight: 60px;\n\tmargin-top: -30px;\n\tmargin-left: -30px;\n\tborder-radius: 100%;\n\tanimation: click_pop 0.3s ease;\n\ttransform: rotate(15deg);\n\tz-index: 500;\n}\n\narea {\n\tz-index: 999;\n}\n\nmap {\n\tz-index: 999;\n}\n\n@keyframes click_pop {\n\t0% {\n\t\tbox-shadow: inset 0 0 0 20px rgba(255, 255, 255, 0.3);\n\t\twidth: 60px;\n\t\theight: 60px;\n\t\tmargin-top: -30px;\n\t\tmargin-left: -30px;\n\t\ttransform: rotate(-30deg);\n\t}\n\t100% {\n\t\tbox-shadow: inset 0 0 0 0 rgba(255, 255, 255, 0.2);\n\t\twidth: 70px;\n\t\theight: 70px;\n\t\tmargin-top: -35px;\n\t\tmargin-left: -35px;\n\t\ttransform: rotate(15deg);\n\t}\n}\nspan.click_pop > span {\n\tposition: absolute;\n\twidth: 60px;\n\theight: 60px;\n\ttop: 50%;\n\tleft: 50%;\n\tmargin-top: -30px;\n\tmargin-left: -30px;\n\ttransform: scale(0.9);\n\t-webkit-filter: blurY(5px);\n}\nspan.click_pop > span:nth-of-type(2) {\n\ttransform: rotate(45deg);\n}\nspan.click_pop > span:nth-of-type(3) {\n\ttransform: rotate(-45deg);\n}\nspan.click_pop > span:last-child {\n\ttransform: rotate(90deg) scale(0.9);\n}\nspan.click_pop > span:before,\nspan.click_pop > span:after {\n\tcontent: '';\n\tposition: absolute;\n\theight: 2px;\n\twidth: 0;\n\ttop: 50%;\n\tleft: -14px;\n\tmargin-top: -1px;\n\tborder-radius: 2px;\n\tbackground: rgba(255, 255, 255, 0.1);\n\tanimation: pop_out_L 0.3s ease;\n\tanimation-delay: 0.1s;\n}\nspan.click_pop > span:after {\n\tleft: auto;\n\tright: -14px;\n\tanimation: pop_out_R 0.3s ease;\n\tanimation-delay: 0.1s;\n}\n@keyframes pop_out_L {\n\t0% {\n\t\tleft: 20px;\n\t\twidth: 2px;\n\t}\n\t20% {\n\t\tbox-shadow: 6px 0 rgba(255, 255, 255, 0.05),\n\t\t\t-4px 0 rgba(255, 255, 255, 0.05);\n\t}\n\t40% {\n\t\twidth: 10px;\n\t}\n\t60% {\n\t\tleft: -14px;\n\t}\n\t100% {\n\t\twidth: 2px;\n\t}\n}\n@keyframes pop_out_R {\n\t0% {\n\t\tright: 20px;\n\t\twidth: 2px;\n\t}\n\t20% {\n\t\tbox-shadow: 6px 0 rgba(255, 255, 255, 0.05),\n\t\t\t-4px 0 rgba(255, 255, 255, 0.05);\n\t}\n\t40% {\n\t\twidth: 10px;\n\t}\n\t60% {\n\t\tright: -14px;\n\t}\n\t100% {\n\t\twidth: 2px;\n\t}\n}\n", ""]);
 // Exports
 module.exports = exports;
 
@@ -21313,33 +21313,6 @@ const CharacterDisplay = (() => {
 
 /***/ }),
 
-/***/ "./src/display/listeners.js":
-/*!**********************************!*\
-  !*** ./src/display/listeners.js ***!
-  \**********************************/
-/*! exports provided: imageClick, mapTest */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "imageClick", function() { return imageClick; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "mapTest", function() { return mapTest; });
-const imageClick = (e) => {
-	console.log(['layerX: ', e.layerX].join(''));
-	console.log(['layerY: ', e.layerY].join(''));
-};
-
-const mapTest = (e) => {
-	console.log(e.target.coords.split(',').slice(0, 2));
-	console.log('pleaase');
-	document.querySelector('#fordSquare').style.display = 'block';
-};
-
-
-
-
-/***/ }),
-
 /***/ "./src/display/setup.js":
 /*!******************************!*\
   !*** ./src/display/setup.js ***!
@@ -21351,9 +21324,7 @@ const mapTest = (e) => {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
 /* harmony import */ var _img_scifi_jpg__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../img/scifi.jpg */ "./src/img/scifi.jpg");
-/* harmony import */ var _listeners__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./listeners */ "./src/display/listeners.js");
-/* harmony import */ var _Characters__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Characters */ "./src/display/Characters.js");
-
+/* harmony import */ var _Characters__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Characters */ "./src/display/Characters.js");
 
 // import { loadCharacters } from '../backend/backend';
 
@@ -21363,30 +21334,59 @@ const render = () => {
 
 	const container = document.createElement('div');
 	container.setAttribute('id', 'container');
-	container.appendChild(addImage());
+	const img = addImage();
+	container.appendChild(img);
 
-	_Characters__WEBPACK_IMPORTED_MODULE_2__["CharacterDisplay"].render();
+	img.addEventListener('mouseup', (e) => {
+		console.log(e.target);
+		const pop = document.querySelector('.click_pop');
+		if (pop != null) pop.remove();
 
+		const span = document.createElement('span');
+		span.classList.add('click_pop');
+		span.style.left = e.clientX + 'px';
+		span.style.top = e.clientY + 'px';
+
+		document.body.appendChild(span);
+
+		// document.body.innerHTML +=
+		// 	'<span class="click_pop" style="left:' +
+		// 	e.clientX +
+		// 	'px;top:' +
+		// 	e.clientY +
+		// 	'px;"><span/><span/><span/><span/></span>';
+	});
+
+	// window.addEventListener('mousedown', (e) => {
+	// const pop = document.querySelector('.click_pop');
+	// if (pop != null) pop.remove();
+
+	// document.body.innerHTML +=
+	// 	'<span class="click_pop" style="left:' +
+	// 	e.clientX +
+	// 	'px;top:' +
+	// 	e.clientY +
+	// 	'px;"><span/><span/><span/><span/></span>';
+	// });
+
+	// window.addEventListener('mouseup', (e) => {
+	// 	const pop = document.querySelector('.click_pop');
+	// 	if (pop != null) pop.remove();
+	// });
+
+	_Characters__WEBPACK_IMPORTED_MODULE_1__["CharacterDisplay"].render();
 	document.body.appendChild(container);
-};
 
-const fordSquare = () => {
-	const fordSquare = document.createElement('div');
-	fordSquare.setAttribute('id', 'fordSquare');
-	fordSquare.style.left = '439px';
-	fordSquare.style.top = '1385px';
-	return fordSquare;
-};
-
-const buildNav = () => {
-	const nav = document.createElement('div');
-	nav.classList.add('nav');
-	const title = document.createElement('div');
-	title.classList.add('title');
-	title.innerHTML = 'Where... where are these guys';
-	nav.appendChild(title);
-	nav.appendChild(addCharacters());
-	return nav;
+	// $(window).mousedown(function (e) {
+	// 	$('.click_pop').remove();
+	// 	$('body').append(
+	// 		'<span class="click_pop" style="left:' +
+	// 			e.pageX +
+	// 			'px;top:' +
+	// 			e.pageY +
+	// 			'px;"><span/><span/><span/><span/></span>'
+	// 	);
+	// });
 };
 
 const addImage = () => {
@@ -21394,7 +21394,7 @@ const addImage = () => {
 	mainImg.setAttribute('id', 'mainImg');
 	mainImg.src = _img_scifi_jpg__WEBPACK_IMPORTED_MODULE_0__["default"];
 	mainImg.setAttribute('usemap', '#characterMap');
-	mainImg.addEventListener('click', _listeners__WEBPACK_IMPORTED_MODULE_1__["imageClick"]);
+
 	return mainImg;
 };
 

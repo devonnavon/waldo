@@ -1,5 +1,4 @@
 import img from '../img/scifi.jpg';
-import { imageClick, mapTest } from './listeners';
 // import { loadCharacters } from '../backend/backend';
 import { CharacterDisplay } from './Characters';
 
@@ -8,29 +7,59 @@ const render = () => {
 
 	const container = document.createElement('div');
 	container.setAttribute('id', 'container');
-	container.appendChild(addImage());
+	const img = addImage();
+	container.appendChild(img);
+
+	img.addEventListener('mouseup', (e) => {
+		console.log(e.target);
+		const pop = document.querySelector('.click_pop');
+		if (pop != null) pop.remove();
+
+		const span = document.createElement('span');
+		span.classList.add('click_pop');
+		span.style.left = e.clientX + 'px';
+		span.style.top = e.clientY + 'px';
+
+		document.body.appendChild(span);
+
+		// document.body.innerHTML +=
+		// 	'<span class="click_pop" style="left:' +
+		// 	e.clientX +
+		// 	'px;top:' +
+		// 	e.clientY +
+		// 	'px;"><span/><span/><span/><span/></span>';
+	});
+
+	// window.addEventListener('mousedown', (e) => {
+	// const pop = document.querySelector('.click_pop');
+	// if (pop != null) pop.remove();
+
+	// document.body.innerHTML +=
+	// 	'<span class="click_pop" style="left:' +
+	// 	e.clientX +
+	// 	'px;top:' +
+	// 	e.clientY +
+	// 	'px;"><span/><span/><span/><span/></span>';
+	// });
+
+	// window.addEventListener('mouseup', (e) => {
+	// 	const pop = document.querySelector('.click_pop');
+	// 	if (pop != null) pop.remove();
+	// });
 
 	CharacterDisplay.render();
 	document.body.appendChild(container);
-};
 
-const fordSquare = () => {
-	const fordSquare = document.createElement('div');
-	fordSquare.setAttribute('id', 'fordSquare');
-	fordSquare.style.left = '439px';
-	fordSquare.style.top = '1385px';
-	return fordSquare;
-};
-
-const buildNav = () => {
-	const nav = document.createElement('div');
-	nav.classList.add('nav');
-	const title = document.createElement('div');
-	title.classList.add('title');
-	title.innerHTML = 'Where... where are these guys';
-	nav.appendChild(title);
-	nav.appendChild(addCharacters());
-	return nav;
+	// $(window).mousedown(function (e) {
+	// 	$('.click_pop').remove();
+	// 	$('body').append(
+	// 		'<span class="click_pop" style="left:' +
+	// 			e.pageX +
+	// 			'px;top:' +
+	// 			e.pageY +
+	// 			'px;"><span/><span/><span/><span/></span>'
+	// 	);
+	// });
 };
 
 const addImage = () => {
@@ -38,7 +67,7 @@ const addImage = () => {
 	mainImg.setAttribute('id', 'mainImg');
 	mainImg.src = img;
 	mainImg.setAttribute('usemap', '#characterMap');
-	mainImg.addEventListener('click', imageClick);
+
 	return mainImg;
 };
 
